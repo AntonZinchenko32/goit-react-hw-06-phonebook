@@ -1,13 +1,17 @@
+import { useDispatch } from 'react-redux';
+import { deleteContact } from 'redux/actions';
 import PropTypes from 'prop-types';
 import css from './ContactItem.module.css';
 
 const ContactItem = ({ name, id, number, deleteContactFunc }) => {
+  const dispatch = useDispatch();
+
   return (
     <li className={css.contactItem}>
       {name}: {number}
       <button
         className={css.deleteButton}
-        onClick={() => deleteContactFunc(id)}
+        onClick={() => dispatch(deleteContact(id))}
       >
         Delete
       </button>

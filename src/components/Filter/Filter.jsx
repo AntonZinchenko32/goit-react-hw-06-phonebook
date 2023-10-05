@@ -1,11 +1,13 @@
+import { useDispatch } from 'react-redux';
+import { setFilterQuery } from 'redux/actions';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
 import css from './Filter.module.css';
 
-const Filter = ({ searchContactFunc }) => {
+const Filter = () => {
   const filterInputId = nanoid();
-
+  const dispatch = useDispatch();
   return (
     <>
       <label htmlFor={filterInputId} className={css.label}>
@@ -14,7 +16,7 @@ const Filter = ({ searchContactFunc }) => {
       <input
         id={filterInputId}
         className={css.input}
-        onChange={searchContactFunc}
+        onChange={evt => dispatch(setFilterQuery(evt.target.value))}
       />
     </>
   );

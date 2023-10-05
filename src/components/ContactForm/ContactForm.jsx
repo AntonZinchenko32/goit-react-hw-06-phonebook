@@ -1,5 +1,9 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+// redux
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/actions';
+
 import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
@@ -12,6 +16,8 @@ const ContactForm = ({ addContactFunc }) => {
   const nameInputId = nanoid();
   const numberInputId = nanoid();
 
+  const dispatch = useDispatch();
+
   const handleChange = evt => {
     if (evt.target.name === 'name') setName(evt.target.value);
     else setNumber(evt.target.value);
@@ -22,7 +28,7 @@ const ContactForm = ({ addContactFunc }) => {
 
     const form = evt.currentTarget;
 
-    addContactFunc({ name, number });
+    dispatch(addContact(name, number));
 
     setName('');
     setNumber('');
