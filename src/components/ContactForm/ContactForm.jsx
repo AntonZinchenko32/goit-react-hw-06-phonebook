@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/actions';
 
-import PropTypes from 'prop-types';
 import css from './ContactForm.module.css';
 
-const ContactForm = ({ addContactFunc }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -70,7 +69,3 @@ const ContactForm = ({ addContactFunc }) => {
 };
 
 export default ContactForm;
-
-ContactForm.propTypes = {
-  addContactFunc: PropTypes.func.isRequired,
-};

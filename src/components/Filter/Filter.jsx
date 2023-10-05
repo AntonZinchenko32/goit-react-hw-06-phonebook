@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { setFilterQuery } from 'redux/actions';
+import { filteringContacts } from 'redux/actions';
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
 
 import css from './Filter.module.css';
 
@@ -16,14 +15,10 @@ const Filter = () => {
       <input
         id={filterInputId}
         className={css.input}
-        onChange={evt => dispatch(setFilterQuery(evt.target.value))}
+        onChange={evt => dispatch(filteringContacts(evt.target.value))}
       />
     </>
   );
 };
 
 export default Filter;
-
-Filter.propTypes = {
-  searchContactFunc: PropTypes.func.isRequired,
-};

@@ -3,7 +3,7 @@ import { deleteContact } from 'redux/actions';
 import PropTypes from 'prop-types';
 import css from './ContactItem.module.css';
 
-const ContactItem = ({ name, id, number, deleteContactFunc }) => {
+const ContactItem = ({ name, id, number }) => {
   const dispatch = useDispatch();
 
   return (
@@ -23,7 +23,6 @@ ContactItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  deleteContactFunc: PropTypes.func.isRequired,
 };
 
 export default ContactItem;

@@ -1,5 +1,12 @@
 import { nanoid } from "nanoid";
 
+export const addContacts = contacts => {
+    return {
+        type: "contacts/addContacts",
+        payload: contacts
+    }
+}
+
 export const addContact = (name, number) => {
   return {
     type: "contacts/addContact",
@@ -18,9 +25,16 @@ export const deleteContact = contactId => {
   };
 };
 
-export const setFilterQuery = value => {
+export const filteringContacts = value => {
   return {
     type: "filter/setFilterQuery",
     payload: value,
   };
 };
+
+// export const filteringContacts = contacts => {
+//   return {
+//     type: "filter/filteringContacts",
+//     payload: contacts,
+//   };
+// };
