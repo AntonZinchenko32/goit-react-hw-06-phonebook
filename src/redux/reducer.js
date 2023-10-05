@@ -1,6 +1,9 @@
-const initialState = [];
+const contactsInitialState = [{id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'}];
 
-export const rootReducer = (state = initialState, action) => {
+const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
     case 'contacts/addContacts':
       return [...state, ...action.payload];
@@ -23,8 +26,6 @@ export const rootReducer = (state = initialState, action) => {
     case 'contacts/deleteContact':
       return state.filter(contact => contact.id !== action.payload);
 
-    case 'filter/setFilterQuery':
-      return action.payload;
 
     case 'filter/filteringContacts':
       if (action.payload === '') return state;
@@ -38,4 +39,12 @@ export const rootReducer = (state = initialState, action) => {
     default:
       return state;
   }
+};
+
+
+export const rootReducer = (state = {}, action) => {
+  // Возвращаем объект состояния
+  return {
+    contacts: contactsReducer(state.contacts, action),
+  };
 };
