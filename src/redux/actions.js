@@ -25,10 +25,3 @@ export const setFilterQuery = value => {
     payload: value,
   };
 };
-
-// export const filteringContacts = contacts => {
-//   return {
-//     type: "filter/filteringContacts",
-//     payload: contacts,
-//   };
-// };
