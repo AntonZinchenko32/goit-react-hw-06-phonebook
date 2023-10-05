@@ -5,10 +5,6 @@ import { devToolsEnhancer } from "@redux-devtools/extension";
 const initialState = {
   contacts: [],
   filter: '',
-  contact: {
-    name: '',
-    number: '',
-  },
 };
 
 // Пока что используем редюсер который
