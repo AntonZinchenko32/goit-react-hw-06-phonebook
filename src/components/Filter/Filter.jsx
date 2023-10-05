@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filteringContacts } from 'redux/actions';
+import { setFilterQuery } from 'redux/actions';
 import { nanoid } from 'nanoid';
 
 import css from './Filter.module.css';
@@ -15,7 +15,7 @@ const Filter = () => {
       <input
         id={filterInputId}
         className={css.input}
-        onChange={evt => dispatch(filteringContacts(evt.target.value))}
+        onChange={evt => dispatch(setFilterQuery(evt.target.value))}
       />
     </>
   );
