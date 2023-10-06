@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
 
-const contactsInitialState = JSON.parse(localStorage.getItem('contacts'));
+const savedContacts = localStorage.getItem('contacts');
+
+let contactsInitialState
+
+if (savedContacts) contactsInitialState = JSON.parse(savedContacts)
+else contactsInitialState = []
 
 const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
