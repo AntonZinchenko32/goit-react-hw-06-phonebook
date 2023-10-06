@@ -1,4 +1,6 @@
 
+import { addContact, deleteContact, setFilterQuery } from "./actions";
+
 
 const savedContacts = localStorage.getItem('contacts');
 
@@ -10,7 +12,7 @@ else contactsInitialState = []
 export const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
 
-    case 'contacts/addContact':
+    case addContact.type:
       // Перевіряємо чи є співпадіння імені серед доданих контактів і імені, що користувач хоче додати
       const { name, number, id } = action.payload;
       const gotMatch = state.find(contact => {
@@ -27,7 +29,7 @@ export const contactsReducer = (state = contactsInitialState, action) => {
       }
       return state;
     // **************************************************
-      case 'contacts/deleteContact':
+      case deleteContact.type:
           const newContactsArr = state.filter(contact => contact.id !== action.payload);
           localStorage.setItem('contacts', JSON.stringify(newContactsArr));
       return newContactsArr
@@ -41,7 +43,7 @@ const filterInitialState = '';
 
 export const filterReducer = (state = filterInitialState, action) => {
   switch (action.type) {
-    case 'filter/setFilterQuery':
+    case setFilterQuery.type:
       return action.payload;
     default:
       return state;
