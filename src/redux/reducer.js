@@ -7,7 +7,7 @@ let contactsInitialState
 if (savedContacts) contactsInitialState = JSON.parse(savedContacts)
 else contactsInitialState = []
 
-const contactsReducer = (state = contactsInitialState, action) => {
+export const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
 
     case 'contacts/addContact':
@@ -39,7 +39,7 @@ const contactsReducer = (state = contactsInitialState, action) => {
 
 const filterInitialState = '';
 
-const filterReducer = (state = filterInitialState, action) => {
+export const filterReducer = (state = filterInitialState, action) => {
   switch (action.type) {
     case 'filter/setFilterQuery':
       return action.payload;
@@ -48,7 +48,4 @@ const filterReducer = (state = filterInitialState, action) => {
   }
 };
 
-export const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  filter: filterReducer,
-});
+
