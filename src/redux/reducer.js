@@ -10,27 +10,29 @@ else contactsInitialState = [];
 
 export const contactsReducer = createReducer(contactsInitialState, {
   [addContact]: (state, action) => {
-    const { name, number, id } = action.payload;
+    const { name } = action.payload;
     const gotMatch = state.find(contact => {
       return contact.name === name;
     });
 
     if (!gotMatch) {
-      state.push({ name, number, id });
+      state.push(action.payload);
       localStorage.setItem('contacts', JSON.stringify(state));
     } else {
       alert(`${name} already in list`);
     }
   },
   [deleteContact]: (state, action) => {
-    const newContactsArr = state.filter(contact => contact.id !== action.payload)
+    const newContactsArr = state.filter(
+      contact => contact.id !== action.payload
+    );
     localStorage.setItem('contacts', JSON.stringify(newContactsArr));
-    return newContactsArr
+    return newContactsArr;
   },
 });
 
 const filterInitialState = '';
 
 export const filterReducer = createReducer(filterInitialState, {
-  [setFilterQuery]: (state, action) => state=action.payload
+  [setFilterQuery]: (state, action) => (state = action.payload),
 });
